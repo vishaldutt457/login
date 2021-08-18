@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import { auth, GoogleAuth,  FacebookAuth} from './firebase';
+import {Button} from "@material-ui/core"
+
 
 function App() {
+  
+  const signIn = () => {
+      auth.signInWithPopup(FacebookAuth)
+  }
+    
+    const login = () => {
+      auth.signInWithPopup(GoogleAuth)
+    }
+
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <div>
+     <Button onClick={signIn} variant="contained" color="primary">Facebook</Button>
+    <Button onClick={login} variant="contained" color="primary">Google</Button>
+   </div>     
+    )
 }
 
-export default App;
+export default App
